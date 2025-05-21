@@ -92,6 +92,8 @@ L'interface utilise [Pico.css Amber Theme](https://picocss.com/docs/themes.html#
 ![Aperçu 1 de l'application](src/main/ressources/screen_app_todolist.png)
 ![Aperçu 2 de l'application](src/main/ressources/screen_app_todolist_Ajouter.png)
 ![Aperçu 3 de l'application](src/main/ressources/screen_app_todolist_Masquer.png)
+![Aperçu 4 de l'application](src/main/ressources/screen_app_todolist_components.png)
+
 
 ---
 
