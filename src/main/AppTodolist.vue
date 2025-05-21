@@ -1,42 +1,75 @@
 <template>
-  <form @submit.prevent="addTask">
-    <fieldset role="group">
-      <input
-          v-model="newTask"
-          type="text"
-          placeholder="Tâche à effectuer"
-      />
-      <button :disabled="newTask.length === 0">Ajouter</button>
-    </fieldset>
-  </form>
+  <Layout>
+    <template #header>
+      <h1>Gestionnaire de tâches</h1>
+    </template>
 
-  <div v-if="tasks.length === 0">
-    Vous n'avez pas de tâche à faire
-  </div>
+    <template #aside>
+      <section>
+        <h2>Résumé</h2>
+        <ul>
+          <li>📌 Total : {{ tasks.length }}</li>
+          <li>✅ Complétées : {{ tasks.filter(t => t.completed).length }}</li>
+          <li>🕒 Restantes : {{ remainingTasks }}</li>
+        </ul>
 
-  <div v-else>
-    <ul>
-      <li
-          v-for="task in sortedTasks()"
-          :key="task.date"
-          :class="{ completed: task.completed }"
-      >
+        <hr />
+
+        <h2>Options</h2>
         <label>
-          <input type="checkbox" v-model="task.completed" />
-          {{ task.title }}
+          <input type="checkbox" v-model="hideCompleted" />
+          Masquer les tâches complétées
         </label>
-      </li>
-    </ul>
+      </section>
+    </template>
 
-    <label>
-      <input type="checkbox" v-model="hideCompleted" />
-      Masquer les tâches complétées
-    </label>
-  </div>
+    <template #main>
+      <form action="" @submit.prevent="addTask">
+        <fieldset role="group">
+          <input
+              v-model="newTask"
+              type="text"
+              placeholder="Nouvelle tâche"
+          />
+          <button :disabled="newTask.length === 0">Ajouter</button>
+        </fieldset>
+      </form>
+
+      <div v-if="tasks.length === 0">
+        Vous n'avez pas de tâche à faire
+      </div>
+
+      <div v-else>
+        <ul>
+          <li
+              v-for="task in sortedTasks"
+              :key="task.date"
+              :class="{ completed: task.completed }"
+          >
+            <Checkbox
+                :label="task.title"
+                v-model="task.completed"
+            />
+          </li>
+        </ul>
+
+        <p v-if="remainingTasks > 0">
+          {{ remainingTasks }} tâche{{ remainingTasks > 1 ? 's' : '' }} à faire
+        </p>
+      </div>
+    </template>
+
+    <template #footer>
+      <small>&copy; 2025 - Application de gestion de tâches personnelle</small>
+    </template>
+  </Layout>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
+import Checkbox from "./Checkbox.vue";
+import Button from "./Button.vue";
+import Layout from "./Layout.vue";
 
 const newTask = ref('')
 const hideCompleted = ref(false)
@@ -59,26 +92,44 @@ const addTask = () => {
     completed: false,
     date: Date.now(),
   })
-
   newTask.value = ''
 }
 
-const sortedTasks = () => {
-  const sortedTasks = tasks.value
+const sortedTasks = computed(() => {
+  const sorted = tasks.value
       .slice()
       .sort((a, b) => (a.completed > b.completed ? 1 : -1))
+  return hideCompleted.value ? sorted.filter(task => !task.completed) : sorted
+})
 
-  if (hideCompleted.value === true) {
-    return sortedTasks.filter(task => !task.completed)
-  }
-
-  return sortedTasks
-}
+const remainingTasks = computed(() => {
+  return tasks.value.filter(t => !t.completed).length
+})
 </script>
 
 <style>
 .completed {
   opacity: 0.5;
   text-decoration: line-through;
+}
+
+aside {
+  padding: 1rem;
+  background-color: #f9f9f9;
+}
+
+aside h2 {
+  margin-top: 0;
+  font-size: 1.1rem;
+}
+
+aside ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem 0;
+}
+
+aside li {
+  margin: 0.3rem 0;
 }
 </style>
