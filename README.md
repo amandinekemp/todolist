@@ -94,7 +94,6 @@ L'interface utilise [Pico.css Amber Theme](https://picocss.com/docs/themes.html#
 ![Aperçu 3 de l'application](src/main/ressources/screen_app_todolist_Masquer.png)
 ![Aperçu 4 de l'application](src/main/ressources/screen_app_todolist_components.png)
 
-
 ---
 
 ## ➤ Contact
