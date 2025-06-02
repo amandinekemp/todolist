@@ -1,64 +1,65 @@
 # ✅ TodoListe
 
-Une application de liste de tâches simple et moderne réalisée avec **Vue 3**, **Vite** et le framework CSS minimaliste **Pico.css**.
-Elle permet d’ajouter, trier et filtrer des tâches en fonction de leur état (complétée ou non).
+Une application de gestion de tâches réalisée avec **Vue 3**, **Vite** et des composants personnalisés. Elle permet d’ajouter, trier, filtrer et suivre le temps passé dans l’interface grâce à un timer intégré.
 
 ---
 
 ## ✨ Fonctionnalités
 
-* ✅ Ajouter une tâche
-* ✅ Marquer une tâche comme complétée
-* ✅ Trier les tâches (non complétées en premier)
-* ✅ Masquer les tâches complétées
-* ✅ Affichage conditionnel si la liste est vide
-* ✅ Interface responsive grâce à Pico.css
+- ✅ Ajouter une nouvelle tâche
+- ✅ Marquer une tâche comme complétée (via un composant `Checkbox`)
+- ✅ Trier automatiquement les tâches : non complétées en premier
+- ✅ Masquer les tâches complétées (option utilisateur)
+- ✅ Affichage dynamique : message si aucune tâche n’est présente
+- ✅ Suivi du temps via un composant `Timer`
+- ✅ Interface en sections : Header, Aside (stats/options), Main (formulaire et liste), Footer
+- ✅ Composants réutilisables (`Checkbox`, `Button`, `Layout`, `Timer`)
 
 ---
 
 ## 🛠️ Stack technique
 
-* **Vue 3** (Composition API)
-* **Vite** pour le bundling rapide
-* **Pico.css** pour le design
-* **JavaScript** natif
+- ⚙️ [Vue 3](https://vuejs.org/) (Composition API + `<script setup>`)
+- ⚡ [Vite](https://vitejs.dev/) pour un développement ultra-rapide
+- 🎨 CSS custom minimaliste (style intégré au composant)
+- 📦 API externe simulée : [JSONPlaceholder](https://jsonplaceholder.typicode.com/)
 
 ---
 
 ## 📦 Installation
 
-1. **Clone le dépôt** :
+1. Clone le dépôt :
 
-   ```bash
-   git clone https://github.com/amandinekemp/todolist.git
-   cd todolist
-   ```
+```bash
+git clone https://github.com/amandinekemp/todolist.git
+cd todolist
+```
 
-2. **Installe les dépendances** :
+2. Installe les dépendances :
 
-   ```bash
-   npm install
-   ```
+```bash
+npm install
+```
 
 ---
 
 ## 🚀 Démarrage du projet
 
-### En mode développement :
+### En développement
 
 ```bash
 npm run dev
 ```
 
-Accède ensuite à [http://localhost:5173](http://localhost:5173)
+Visite ensuite : [http://localhost:5173](http://localhost:5173)
 
-### Pour créer une version de production :
+### Build de production
 
 ```bash
 npm run build
 ```
 
-### Pour prévisualiser le build :
+### Prévisualisation du build
 
 ```bash
 npm run preview
@@ -66,33 +67,55 @@ npm run preview
 
 ---
 
-## 🔍 Code principal
+## 🔍 Détails des composants
 
-### `AppTodolist.vue`
+### `App.vue`
 
-* Utilise `v-model` pour la liaison bidirectionnelle des champs.
-* Trie les tâches avec une méthode `sortedTasks()`.
-* Applique un style `.completed` pour les tâches faites.
-* Masque les tâches complétées si la case est cochée.
+* Gère l’état global : `tasks`, `newTask`, `hideCompleted`, `showTimer`
+* Utilise `fetch()` pour charger des tâches fictives au montage
+* Calcule dynamiquement :
 
-### `main.js`
+    * `sortedTasks` : tri par état de complétion
+    * `remainingTasks` : nombre de tâches non complétées
+* Affiche un formulaire, la liste triée et un résumé latéral
 
-* Monte l'application Vue dans l'élément `#app`.
+### `Checkbox.vue`
+
+* Composant réutilisable avec `v-model`
+* Émet des événements `check` / `uncheck` personnalisés
+
+### `Layout.vue`
+
+* Structure en grille : `header`, `aside`, `main`, `footer`
+* Slots pour une organisation claire
+
+### `Timer.vue`
+
+* Timer auto-incrémenté (en secondes)
+* Affiche les dimensions du bloc au montage
 
 ---
 
-## 🎨 Design
+## 🎨 Interface & Design
 
-L'interface utilise [Pico.css Amber Theme](https://picocss.com/docs/themes.html#amber) pour un design élégant et minimaliste sans effort.
+L’interface est sobre et structurée :
+
+* Mise en page responsive via `grid-template-columns`
+* Styles internes pour les éléments : `aside`, `completed`, etc.
+* Icônes et emojis pour lisibilité rapide
+
+## 📄 Licence
+
+Projet open-source sous licence [MIT](LICENSE).
 
 ---
 
 ## 🖼️ Aperçu
 
-![Aperçu 1 de l'application](src/main/ressources/screen_app_todolist.png)
-![Aperçu 2 de l'application](src/main/ressources/screen_app_todolist_Ajouter.png)
-![Aperçu 3 de l'application](src/main/ressources/screen_app_todolist_Masquer.png)
-![Aperçu 4 de l'application](src/main/ressources/screen_app_todolist_components.png)
+![Aperçu 1 de l'application](src/main/ressources/screen_app_Todolist.png)
+![Aperçu 2 de l'application](src/main/ressources/screen_app_Todolist_Add.png)
+![Aperçu 3 de l'application](src/main/ressources/screen_app_Tdolist_Hide.png)
+![Aperçu 4 de l'application](src/main/ressources/screen_app_Todolist_Not_hide.png)
 
 ---
 
