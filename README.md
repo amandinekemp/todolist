@@ -4,6 +4,20 @@ Une application de gestion de tâches réalisée avec **Vue 3**, **Vite** et des
 
 ---
 
+## ➤ Table des matières
+
+- [➤ Technologies utilisées]()
+- [➤ Installation]()
+- [➤ Démarrage du projet]()
+- [➤ Fonctionnalités]()
+- [➤ Détails des composants]()
+- [➤ Interface & Design]()
+- [➤ License]()
+- [➤ Aperçu]()
+- [➤ Contact]()
+
+---
+
 ## ✨ Fonctionnalités
 
 - ✅ Ajouter une nouvelle tâche
