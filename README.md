@@ -6,15 +6,15 @@ Une application de gestion de tâches réalisée avec **Vue 3**, **Vite** et des
 
 ## ➤ Table des matières
 
-- [➤ Technologies utilisées]()
-- [➤ Installation]()
-- [➤ Démarrage du projet]()
-- [➤ Fonctionnalités]()
-- [➤ Détails des composants]()
-- [➤ Interface & Design]()
-- [➤ License]()
-- [➤ Aperçu]()
-- [➤ Contact]()
+- [➤ Fonctionnalités](https://github.com/amandinekemp/todolist#-fonctionnalit%C3%A9s)
+- [➤ Stack technique](https://github.com/amandinekemp/todolist#%EF%B8%8F-stack-technique)
+- [➤ Installation](https://github.com/amandinekemp/todolist#-installation)
+- [➤ Démarrage du projet](https://github.com/amandinekemp/todolist#-d%C3%A9marrage-du-projet)
+- [➤ Détails des composants](https://github.com/amandinekemp/todolist#-d%C3%A9tails-des-composants)
+- [➤ Interface & Design](https://github.com/amandinekemp/todolist#-interface--design)
+- [➤ License](https://github.com/amandinekemp/todolist#-licence)
+- [➤ Aperçu](https://github.com/amandinekemp/todolist#%EF%B8%8F-aper%C3%A7u)
+- [➤ Contact](https://github.com/amandinekemp/todolist#-contact)
 
 ---
 
